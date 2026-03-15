@@ -1,0 +1,48 @@
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { useAuth } from "@clerk/react"
+import { Menu } from "lucide-react"
+import NavigationRoutes from "../NavigationRoutes"
+import { NavLink } from "react-router-dom"
+import { cn } from "@/lib/utils"
+
+export const ToggleContainer = () => {
+  const { userId } = useAuth()
+  return (
+    <Sheet>
+      <SheetTrigger>
+        <Menu className="block md:hidden"></Menu>
+      </SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle></SheetTitle>
+        </SheetHeader>
+        <nav className="gap-6 flex flex-col items-start">
+          <NavigationRoutes isMobile />
+            {userId && (
+              <NavLink
+                to={"/generate"}
+                className={({ isActive }) =>
+                  cn(
+                    "text-base text-neutral-600",
+                    isActive && "text-neutral-900 font-semibold"
+                  )
+                }
+              >
+                Take an Interview
+              </NavLink>
+            )} 
+            </nav>
+      </SheetContent>
+    </Sheet>
+  )
+}
+export default ToggleContainer
