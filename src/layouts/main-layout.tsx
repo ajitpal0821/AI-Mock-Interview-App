@@ -1,7 +1,8 @@
 import Header from "@/components/ui/Header"
-import Footer from "@/components/ui/footer"
+
 import { Outlet } from "react-router-dom"
 import { Container } from "@/components/ui/container"
+import Footer from "@/components/ui/footer"
  const PublicLayout = () => {
     return (
         <div className="flex flex-col h-screen">
