@@ -16,26 +16,26 @@ const Header = () => {
                     <LogoContainer></LogoContainer>
                     {/* navigate section */}
                     <nav className="hidden md:flex items-center gap-3">
-                        <NavigationRoutes
-                            {...userId && (
-                                <NavLink   
-                                    to={"/generate"}
-                                    className={({ isActive }) =>
-                                        cn(
-                                            "text-base text-neutral-600",
-                                            isActive && "text-neutral-900 font-semibold"
-                                        )
-                                    }
-                                >
-                                    Take an Interview
-                                </NavLink>
-                            )} />
+                        <NavigationRoutes />
+                        {userId && (
+                            <NavLink
+                                to="/generate"
+                                className={({ isActive }) =>
+                                    cn(
+                                        "text-base text-neutral-600",
+                                        isActive && "text-neutral-900 font-semibold"
+                                    )
+                                }
+                            >
+                                Take an Interview
+                            </NavLink>
+                        )}
                     </nav>
 
                     {/* profile section */}
                     <div className="ml-auto flex items-center gap-6">
-                        <Profilecontainer/>
-                        <ToggleContainer/>
+                        <Profilecontainer />
+                        <ToggleContainer />
                     </div>
                 </div>
             </Container>
