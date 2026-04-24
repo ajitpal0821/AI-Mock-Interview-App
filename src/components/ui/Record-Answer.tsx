@@ -98,7 +98,7 @@ export const RecordAnswer = ({ question, isWebcamOn, setWebcamOn }: RecordAnswer
         catch (error) {
             console.log(error)
             toast.error("Error", { description: "An error occurred while generating feedback, please try again." })
-            return { ratings: 0, feedback: "Unable to generate feedback at the moment" }
+            return { ratings: 1, feedback: "Unable to generate feedback at the moment" }
         } finally {
             setIsAiGeneratingResponse(false);
         }
