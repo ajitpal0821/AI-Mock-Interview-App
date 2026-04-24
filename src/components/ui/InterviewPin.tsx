@@ -75,7 +75,7 @@ export const InterviewPin = ({ interview, ontMockPage = false }: InterviewPinPro
                     <TooltipButton content="Start Mock Interview"
                         icon={<Sparkles />}
                         onClick={() => {
-                            navigate(`/generate/${interview.id}`, { replace: true })
+                        navigate(`/generate/interview/${interview.id}`, { replace: true })
                         }}
                         disabled={false}
                         buttonVariant="ghost"
