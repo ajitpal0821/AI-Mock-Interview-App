@@ -35,13 +35,16 @@ export const Questionsection = ({ questions }: QuestionSectionProps) => {
       }
     }
   }
+  if (!questions || questions.length === 0) {
+  return <div>No questions available</div>;
+}
 
     return (
       <div className="w-full min-h-96 border rounded-md p-4">
         <Tabs defaultValue={questions[0]?.question} className="w-full space-y-12" >
           <TabsList className="bg-transparent w-full flex flex-wrap items-center justify-start gap-4">
             {questions?.map((tab, index) => (
-              <TabsTrigger className={cn("data-[state=active]:bg-emerald-200 data-[state=active]:shadow-md text-xs px-2")} value={tab?.question} >
+              <TabsTrigger   key={index} className={cn("data-[state=active]:bg-emerald-200 data-[state=active]:shadow-md text-xs px-2")} value={tab?.question} >
                 {`Question #${index + 1}`}
               </TabsTrigger>
             ))}
