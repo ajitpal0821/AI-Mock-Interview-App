@@ -76,12 +76,27 @@ export const RecordAnswer = ({ question, isWebcamOn, setWebcamOn }: RecordAnswer
     };
     const generateResult = async (question: string, idealAnswwer: string, userAns: string): Promise<AIResponse | undefined> => {
         setIsAiGeneratingResponse(true);
-        const prompt = `Question: "${question}"
-        User Answer: "${userAns}"
-        Correct Answer: "${idealAnswwer}"
-        Please compare the user's answer to the correct answer, and provide a rating (from 1 to 10) based on answer quality, and offer feedback for improvement.
-        Return the result in JSON format with the fields "ratings"(number) and "feedback"(string).
-        `
+        const prompt = `
+Evaluate the user's answer.
+
+Return ONLY valid JSON. No explanation, no markdown.
+
+Format:
+{
+  "ratings": number,
+  "feedback": "string"
+}
+
+Rules:
+- ratings must be between 1 and 10
+- feedback must be concise and helpful
+- do NOT include backslashes (\\), regex, or special escape characters
+- do NOT include extra text
+
+Question: ${question}
+User Answer: ${userAns}
+Correct Answer: ${idealAnswwer}
+`;
         try {
             const response = await genAI.models.generateContent({
                 model,
