@@ -71,37 +71,21 @@ export const FormMockInterview = ({ initialData }: FormMockInterview) => {
   }
   const generateAIResponse = async (data: FormData) => {
     const prompt = `
-Generate EXACTLY 5 technical interview questions with detailed answers.
+        As an experienced prompt engineer, generate a JSON array containing 5 technical interview questions along with detailed answers based on the following job information. Each object in the array should have the fields "question" and "answer", formatted as follows:
 
-Return ONLY valid JSON (no markdown, no code blocks, no explanations).
+        [
+          { "question": "<Question text>", "answer": "<Answer text>" },
+          ...
+        ]
 
-Strict format:
-[
-  { "question": "string", "answer": "string" },
-  { "question": "string", "answer": "string" }
-]
+        Job Information:
+        - Job Position: ${data?.position}
+        - Job Description: ${data?.description}
+        - Years of Experience Required: ${data?.experience}
+        - Tech Stacks: ${data?.techStack}
 
-Rules:
-- Output must be a valid JSON array
-- Do NOT include \`\`\`, "json", or any extra text
-- Do NOT include backslashes (\\), regex patterns, or escape sequences like \\s or \\d
-- Keep answers clear, structured, and professional
-- Ensure all strings are properly escaped for JSON
-
-Job Information:
-- Job Position: ${data?.position}
-- Job Description: ${data?.description}
-- Years of Experience Required: ${data?.experience}
-- Tech Stack: ${data?.techStack}
-
-The questions should evaluate:
-- Core concepts
-- Practical problem-solving
-- Real-world experience
-- Best practices in ${data?.techStack}
-
-Return ONLY the JSON array.
-`;
+        The questions should assess skills in ${data?.techStack} development and best practices, problem-solving, and experience handling complex requirements. Please format the output strictly as an array of JSON objects without any additional labels, code blocks, or explanations. Return only the JSON array with questions and answers.
+        `;
 
 
     const response = await genAI.models.generateContent({

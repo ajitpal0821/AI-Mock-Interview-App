@@ -56,42 +56,32 @@ export const RecordAnswer = ({ question, isWebcamOn, setWebcamOn }: RecordAnswer
 
         }
     }
-   const cleanAIResponse = (response: string): AIResponse | undefined => {
-  try {
-    const cleaned = response
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
+    const cleanAIResponse = (response: string): AIResponse | undefined => {
+        try {
+            let cleaned = response.trim();
 
-    return JSON.parse(cleaned); // ✅ direct parse
-  } catch (error) {
-    console.error("Parsing error:", error);
-    return undefined;
-  }
-};
+            // remove markdown
+            cleaned = cleaned.replace(/```json|```/g, "");
+
+            // extract JSON object {}
+            const match = cleaned.match(/\{[\s\S]*\}/);
+
+            if (!match) return undefined;
+
+            return JSON.parse(match[0]);
+        } catch (error) {
+            console.error("Parsing error:", error);
+            return undefined;
+        }
+    };
     const generateResult = async (question: string, idealAnswwer: string, userAns: string): Promise<AIResponse | undefined> => {
         setIsAiGeneratingResponse(true);
-        const prompt = `
-Evaluate the user's answer.
-
-Return ONLY valid JSON. No explanation, no markdown.
-
-Format:
-{
-  "ratings": number,
-  "feedback": "string"
-}
-
-Rules:
-- ratings must be between 1 and 10
-- feedback must be concise and helpful
-- do NOT include backslashes (\\), regex, or special escape characters
-- do NOT include extra text
-
-Question: ${question}
-User Answer: ${userAns}
-Correct Answer: ${idealAnswwer}
-`;
+        const prompt = `Question: "${question}"
+        User Answer: "${userAns}"
+        Correct Answer: "${idealAnswwer}"
+        Please compare the user's answer to the correct answer, and provide a rating (from 1 to 10) based on answer quality, and offer feedback for improvement.
+        Return the result in JSON format with the fields "ratings"(number) and "feedback"(string).
+        `
         try {
             const response = await genAI.models.generateContent({
                 model,
