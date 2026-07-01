@@ -3,6 +3,14 @@
 An intelligent AI-powered mock interview platform built with React and Firebase. This application helps job candidates practice interviews with AI-generated questions, real-time feedback, and personalized performance reports.
 
 ---
+<img width="1846" height="911" alt="image" src="https://github.com/user-attachments/assets/2986c1e9-8aad-4b3a-8e95-941b2ecc8cfe" />
+<img width="1752" height="653" alt="image" src="https://github.com/user-attachments/assets/04d097a4-c653-4502-a759-e1c5f085a36c" />
+
+
+<img width="2376" height="2633" alt="localhost_5173_generate_feedback_W6PNlcCW79iPuARIjonl (1)" src="https://github.com/user-attachments/assets/23a5eb9a-3d39-4318-ad9e-2db62041105f" />
+<img width="2376" height="1671" alt="localhost_5173_generate_interview_W6PNlcCW79iPuARIjonl" src="https://github.com/user-attachments/assets/aac08f4e-a01c-4594-9ff9-c30167374730" />
+
+<img width="2376" height="1824" alt="localhost_5173_generate_interview_W6PNlcCW79iPuARIjonl_start" src="https://github.com/user-attachments/assets/609eda95-3de0-4dfa-9626-1d17f565916d" />
 
 ## 📋 Table of Contents
 
