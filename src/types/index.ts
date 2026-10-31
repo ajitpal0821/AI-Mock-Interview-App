@@ -30,6 +30,7 @@ export interface UserAnswer{
     aiFeedback:string,
     aiRating:number,
     userId:string,
-    createAt:Timestamp,
-    updateAt:Timestamp
+    createdAt?:Timestamp | FieldValue,
+    createAt?:Timestamp | FieldValue,
+    updateAt?:Timestamp | FieldValue
 }

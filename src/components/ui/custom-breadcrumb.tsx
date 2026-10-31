@@ -8,45 +8,46 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Home } from "lucide-react";
 import React from "react";
-interface CustomBreadCrumbProps{
-    breadCrumbPage:string;
-    breadCrumbItems?:{link:string;label:string}[];
+import { Link } from "react-router-dom";
+
+interface CustomBreadCrumbProps {
+  breadCrumbPage: string;
+  breadCrumbItems?: { link: string; label: string }[];
 }
 
-export const CustomBreadCrumb = ({breadCrumbPage,breadCrumbItems}:CustomBreadCrumbProps) => {
-    return (
-    <Breadcrumb>
-      <BreadcrumbList>
+export const CustomBreadCrumb = ({ breadCrumbPage, breadCrumbItems }: CustomBreadCrumbProps) => {
+  return (
+    <Breadcrumb className="text-xs">
+      <BreadcrumbList className="text-xs text-[#86868b]">
         <BreadcrumbItem>
-          <BreadcrumbLink
-            href="/"
-            className="flex items-center justify-center hover:text-emerald-500"
-          >
-            <Home className="w-3 h-3 mr-2" />
-            Home
+          <BreadcrumbLink asChild>
+            <Link to="/" className="flex items-center gap-1.5 hover:text-[#1d1d1f] dark:hover:text-white transition-colors">
+              <Home className="w-3.5 h-3.5" />
+              <span>Home</span>
+            </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
 
         {breadCrumbItems &&
-          breadCrumbItems.map((item:any, i:any) => (
+          breadCrumbItems.map((item, i) => (
             <React.Fragment key={i}>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="text-[#86868b]/60" />
               <BreadcrumbItem>
-                <BreadcrumbLink
-                  href={item.link}
-                  className="hover:text-emerald-500"
-                >
-                  {item.label}
+                <BreadcrumbLink asChild>
+                  <Link to={item.link} className="hover:text-[#1d1d1f] dark:hover:text-white transition-colors">
+                    {item.label}
+                  </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </React.Fragment>
           ))}
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator className="text-[#86868b]/60" />
         <BreadcrumbItem>
-          <BreadcrumbPage>{breadCrumbPage}</BreadcrumbPage>
+          <BreadcrumbPage className="font-medium text-[#1d1d1f] dark:text-[#f5f5f7]">
+            {breadCrumbPage}
+          </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
   );
-  
-}
+};

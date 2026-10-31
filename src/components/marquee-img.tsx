@@ -1,9 +1,11 @@
 export const MarqueImg = ({ img }: { img: string }) => {
   return (
-    <img
-      src={img}
-      className="w-44 h-44 xl:w-52 xl:h-52 object-contain grayscale mx-12 xl:mx-16"
-      alt=""
-    />
+    <div className="flex items-center justify-center px-8 sm:px-12 h-12">
+      <img
+        src={img}
+        className="h-7 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-200"
+        alt="Tech ecosystem partner"
+      />
+    </div>
   );
 };

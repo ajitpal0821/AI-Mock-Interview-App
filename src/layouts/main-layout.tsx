@@ -3,19 +3,17 @@ import Header from "@/components/ui/Header"
 import { Outlet } from "react-router-dom"
 import { Container } from "@/components/ui/container"
 import Footer from "@/components/ui/footer"
- const PublicLayout = () => {
+const MainLayout = () => {
     return (
-        <div className="flex flex-col h-screen">
+        <div className="min-h-screen flex flex-col bg-background">
             <Header />
-            <Container className="flex-grow">
-                <main className="flex-grow">
-                    <Outlet>
-
-                    </Outlet>
+            <Container className="flex-1 w-full py-6">
+                <main className="w-full">
+                    <Outlet />
                 </main>
             </Container>
             <Footer />
         </div>
     )
 }
-export default PublicLayout
+export default MainLayout

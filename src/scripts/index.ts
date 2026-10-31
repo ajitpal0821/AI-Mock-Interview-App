@@ -35,7 +35,41 @@ const safetySettings = [
     },
 ];
 
-export const aiConfig =({
+export const aiConfig = {
   generationConfig,
   safetySettings,
-});
+};
+
+/**
+ * Resilient AI generation with automatic model fallback
+ * Tries modern Gemini Flash models in order of availability
+ */
+export const generateAIContent = async (prompt: string): Promise<string> => {
+  const candidateModels = [
+    "gemini-2.0-flash",
+    "gemini-1.5-flash",
+    model,
+    "models/gemini-1.5-flash",
+  ];
+
+  let lastError: any = null;
+
+  for (const candidate of candidateModels) {
+    try {
+      const response = await genAI.models.generateContent({
+        model: candidate,
+        contents: prompt,
+        config: aiConfig,
+      });
+
+      if (response && response.text) {
+        return response.text;
+      }
+    } catch (err: any) {
+      console.warn(`Model "${candidate}" failed, attempting fallback:`, err?.message || err);
+      lastError = err;
+    }
+  }
+
+  throw lastError || new Error("All candidate Gemini models failed to generate content.");
+};

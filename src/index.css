@@ -115,17 +115,31 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border outline-ring/50;
-    }
+  }
   body {
     @apply bg-background text-foreground;
-    }
-    .text-outline {
-    color: white;
-    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6),
-      /* Top-left */ 1px -1px 0 rgba(0, 0, 0, 0.6),
-      /* Top-right */ -1px 1px 0 rgba(0, 0, 0, 0.6),
-      /* Bottom-left */ 1px 1px 0 rgba(0, 0, 0, 0.6); /* Bottom-right */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
+    letter-spacing: -0.01em;
   }
+}
+
+@keyframes apple-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.animate-apple-indeterminate {
+  animation: apple-indeterminate 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }

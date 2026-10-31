@@ -14,13 +14,20 @@ import { CreateEditPage } from './routes/create-edit-page'
 import { MockLoadPage } from './routes/mock-load-page'
 import MockInterviewPage from './routes/mock-interview-page'
 import Feedback from './routes/feedback'
+import AuthHandler from './handlers/auth-handlers'
+
 const App = () => {
   return (
-    <Router >
+    <Router>
+      <AuthHandler />
       <Routes>
         {/* public routes */}
-        <Route element={<PublicLayout />} >
-          <Route index element={<Home />} />{/* display in outlet that we wrote in app.jsx */}
+        <Route element={<PublicLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<Home />} />
+          <Route path="contact" element={<Home />} />
+          <Route path="services" element={<Home />} />
+          <Route path="*" element={<Home />} />
         </Route>
 
         {/* authentication routes */}
