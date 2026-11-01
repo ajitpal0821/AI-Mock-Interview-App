@@ -1,6 +1,31 @@
 # 🎯 AI Mock Interview App
 
 An intelligent AI-powered mock interview platform built with React and Firebase. This application helps job candidates practice interviews with AI-generated questions, real-time feedback, and personalized performance reports.
+## Home Page
+<img width="1917" height="867" alt="image" src="https://github.com/user-attachments/assets/328a973b-c5b6-441b-9e06-ade8c68b4960" />
+
+
+<img width="1915" height="868" alt="image" src="https://github.com/user-attachments/assets/169c315f-4780-4354-bae5-46f567966dd9" />
+
+
+<img width="1917" height="866" alt="image" src="https://github.com/user-attachments/assets/41d6f779-a0b7-43f3-b940-bf7e371a9858" />
+
+
+## After Login
+
+<img width="1917" height="867" alt="image" src="https://github.com/user-attachments/assets/cbba12eb-9cb8-487c-b0a3-271789cb2a33" />
+
+<img width="1917" height="866" alt="image" src="https://github.com/user-attachments/assets/d4ef78e8-3a66-4d29-926d-e7361b5d2551" />
+
+<img width="1917" height="865" alt="image" src="https://github.com/user-attachments/assets/49187d9e-b25c-41b8-b384-3961b20c73b7" />
+
+<img width="1900" height="2383" alt="ai mock interview" src="https://github.com/user-attachments/assets/13ad76f5-604b-436d-b70c-59ae799328ab" />
+
+## Final Evalution
+<img width="1900" height="2855" alt="ai mock interview 2" src="https://github.com/user-attachments/assets/849397b6-54f9-4694-99b1-ebcd1921a68e" />
+
+
+
 
 
 
